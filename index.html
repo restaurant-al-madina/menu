@@ -3,248 +3,351 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Café Restaurant SAF-SAF Oujda | Site Officiel</title>
+    <title>SAF-SAF OUJDA | Excellence Culinaire</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --saf-green: #2d5a27;
+            --saf-green: #1e3d1a;
             --saf-gold: #c5a059;
             --saf-cream: #fdfbf7;
-            --saf-dark: #1a1a1a;
+            --saf-dark: #0f0f0f;
+            --glass: rgba(255, 255, 255, 0.95);
         }
 
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: var(--saf-cream);
             color: var(--saf-dark);
-            line-height: 1.6;
+            overflow-x: hidden;
         }
 
         h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
 
-        /* Navigation */
-        .navbar {
-            background-color: white;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-            padding: 1rem 0;
+        /* Smooth Entrance Animation */
+        .fade-up {
+            animation: fadeUp 1s ease forwards;
+            opacity: 0;
         }
-        .navbar-brand {
-            color: var(--saf-green) !important;
-            font-weight: 700;
-            letter-spacing: 2px;
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Hero Banner with your image */
+        /* Hero Parallax */
         .hero-banner {
-            background: linear-gradient(rgba(0, 0, 0, 0.795), rgba(0, 0, 0, 0.86)), 
-                        url('restoooo.jpeg'); /* Make sure this file is in the same folder as this HTML file */
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), 
+                        url('restoooo.jpeg');
             background-size: cover;
             background-position: center;
-            height: 50vh;
+            background-attachment: fixed;
+            height: 80vh;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             text-align: center;
-            margin-bottom: 4rem;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
         }
 
-        /* Dot-Leader Item Style */
+        .hero-content h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            letter-spacing: 8px;
+            margin-bottom: 1rem;
+        }
+
+        /* Floating Category Nav */
+        .category-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            overflow-x: auto;
+        }
+        .category-link {
+            text-decoration: none;
+            color: var(--saf-dark);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+        .category-link:hover { color: var(--saf-gold); }
+
+        /* Menu Cards */
+        .menu-wrapper {
+            max-width: 1000px;
+            margin: -50px auto 100px;
+            background: white;
+            padding: 60px 40px;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 2;
+        }
+
         .section-header {
             text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
+            margin-bottom: 4rem;
         }
         .section-header h2 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: var(--saf-green);
-            display: inline-block;
-            background: var(--saf-cream);
-            padding: 0 20px;
             position: relative;
-            z-index: 1;
+            display: inline-block;
         }
-        .section-header::after {
+        .section-header h2::after {
             content: "";
+            width: 50%;
+            height: 2px;
+            background: var(--saf-gold);
             position: absolute;
-            top: 50%; left: 0; width: 100%; height: 1px;
-            background: #ddd; z-index: 0;
+            bottom: -10px;
+            left: 25%;
         }
 
-        .menu-item { margin-bottom: 1.2rem; }
+        .menu-item { 
+            margin-bottom: 2rem; 
+            transition: 0.3s;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .menu-item:hover { background: #fcf9f2; }
+
         .menu-lead {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            position: relative;
-            overflow: hidden;
         }
         .menu-title {
-            font-weight: 600;
-            background: var(--saf-cream);
-            padding-right: 12px;
-            z-index: 1;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #222;
         }
         .menu-dots {
             flex-grow: 1;
-            border-bottom: 1px dotted #aaa;
-            margin: 0 5px;
-            position: relative;
-            top: -4px;
+            border-bottom: 1px solid #ddd;
+            margin: 0 15px;
         }
         .menu-price {
+            font-family: 'Playfair Display', serif;
             font-weight: 700;
             color: var(--saf-gold);
-            background: var(--saf-cream);
-            padding-left: 12px;
-            z-index: 1;
+            font-size: 1.2rem;
         }
-        .menu-sub { font-size: 0.85rem; color: #666; font-style: italic; }
+        .menu-sub { font-size: 0.85rem; color: #888; display: block; margin-top: 5px; }
 
-        /* Highlight Section */
-        .highlight-box {
-            background: white;
-            border: 1px solid var(--saf-gold);
-            padding: 2.5rem;
-            border-radius: 4px;
-            margin-bottom: 5rem;
+        /* Friday Highlight - Floating Card */
+        .friday-special {
+            background: var(--saf-green);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: -150px;
+            margin-bottom: 80px;
+            box-shadow: 0 20px 40px rgba(30, 61, 26, 0.3);
             text-align: center;
         }
 
-        footer {
-            background-color: var(--saf-dark);
-            color: #999;
-            padding: 4rem 0 2rem;
-            margin-top: 5rem;
+        /* Action Buttons */
+        .btn-gold {
+            background: var(--saf-gold);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            letter-spacing: 2px;
+            font-weight: 700;
+            transition: 0.3s;
         }
-        .dev-credit { font-size: 0.75rem; letter-spacing: 2px; margin-top: 2rem; border-top: 1px solid #333; padding-top: 1.5rem; }
+        .btn-gold:hover { transform: scale(1.05); background: #b08e4d; color: white;}
+
+        footer {
+            background: var(--saf-dark);
+            color: white;
+            padding: 80px 0 40px;
+            clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+        }
+        .dev-credit { 
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .menu-wrapper { margin: -30px 15px 50px; padding: 30px 20px; }
+            .hero-banner { height: 60vh; }
+        }
     </style>
 </head>
 <body>
 
-    <nav class="navbar sticky-top">
-        <div class="container text-center">
-            <a class="navbar-brand mx-auto" href="#">SAF-SAF OUJDA</a>
-        </div>
-    </nav>
-
     <header class="hero-banner">
-        <div class="container">
-            <h1 class="display-3 mb-2">L’Art de la Cuisine Marocaine</h1>
-            <p class="lead text-uppercase" style="letter-spacing: 3px; color: var(--saf-gold);">Tradition servie avec passion</p>
+        <div class="hero-content fade-up">
+            <h1 class="display-1">SAF-SAF</h1>
+            <p class="lead text-uppercase fw-light" style="letter-spacing: 5px;">L’Art de la Cuisine Marocaine</p>
+            <div class="mt-4">
+                <a href="#menu" class="btn btn-gold">DÉCOUVRIR LE MENU</a>
+            </div>
         </div>
     </header>
 
     <div class="container">
-        
-        <div class="highlight-box">
-            <h4 class="text-uppercase mb-4" style="color: var(--saf-gold); letter-spacing: 4px;">Seulement Vendredi</h4>
-            <div class="row">
-                <div class="col-md-4"><strong>Couscous + Lben</strong><br><span style="color:var(--saf-gold)">55 Dh</span></div>
-                <div class="col-md-4 border-start border-end"><strong>Couscous Viande</strong><br><span style="color:var(--saf-gold)">55 Dh</span></div>
-                <div class="col-md-4"><strong>Couscous Poulet</strong><br><span style="color:var(--saf-gold)">45 Dh</span></div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 friday-special fade-up">
+                <h4 class="text-uppercase mb-4" style="letter-spacing: 5px; color: var(--saf-gold);">Rituel du Vendredi</h4>
+                <div class="row g-4">
+                    <div class="col-md-4"><strong>Couscous + Lben</strong><br><span class="fs-4">55 Dh</span></div>
+                    <div class="col-md-4 border-md-start border-md-end"><strong>Couscous Viande</strong><br><span class="fs-4">55 Dh</span></div>
+                    <div class="col-md-4"><strong>Couscous Poulet</strong><br><span class="fs-4">45 Dh</span></div>
+                </div>
             </div>
         </div>
 
-        <div class="row g-5">
-            <div class="col-lg-6">
-                <div class="section-header"><h2>Salades & Entrées</h2></div>
-                <div class="menu-item">
-                    <div class="menu-lead"><span class="menu-title">Salade Variée</span><span class="menu-dots"></span><span class="menu-price">37 Dh</span></div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-lead"><span class="menu-title">Salade Marocaine</span><span class="menu-dots"></span><span class="menu-price">20 Dh</span></div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-lead"><span class="menu-title">Harira Complet</span><span class="menu-dots"></span><span class="menu-price">18 Dh</span></div>
-                    <span class="menu-sub">+ Chebakiya, Tmer, Oeuf dur</span>
+        <nav class="category-nav d-none d-md-flex">
+            <a href="#entrees" class="category-link">Salades</a>
+            <a href="#burgers" class="category-link">Burgers</a>
+            <a href="#tajines" class="category-link">Tajines</a>
+            <a href="#grillades" class="category-link">Grillades</a>
+            <a href="#desserts" class="category-link">Desserts</a>
+        </nav>
+
+        <div id="menu" class="menu-wrapper shadow-lg">
+            
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <section id="entrees">
+                        <div class="section-header"><h2>Salades & Entrées</h2></div>
+                        <div class="menu-item">
+                            <div class="menu-lead"><span class="menu-title">Salade Variée</span><span class="menu-dots"></span><span class="menu-price">37 Dh</span></div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-lead"><span class="menu-title">Salade Marocaine</span><span class="menu-dots"></span><span class="menu-price">20 Dh</span></div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-lead"><span class="menu-title">Harira Complet</span><span class="menu-dots"></span><span class="menu-price">18 Dh</span></div>
+                            <span class="menu-sub">+ Chebakiya, Tmer, Oeuf dur</span>
+                        </div>
+                    </section>
+
+                    <section id="burgers" class="mt-5">
+                        <div class="section-header"><h2>Burgers Gourmet</h2></div>
+                        <div class="menu-item">
+                            <div class="menu-lead"><span class="menu-title">L'Original</span><span class="menu-dots"></span><span class="menu-price">42 Dh</span></div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-lead"><span class="menu-title">Chiken</span><span class="menu-dots"></span><span class="menu-price">38 Dh</span></div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-lead"><span class="menu-title">Smoky</span><span class="menu-dots"></span><span class="menu-price">47 Dh</span></div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-lead"><span class="menu-title">Saf-Saf (Double)</span><span class="menu-dots"></span><span class="menu-price">70 Dh</span></div>
+                        </div>
+                    </section>
                 </div>
 
-                <div class="section-header mt-5"><h2>Burgers</h2></div>
-                <div class="menu-item">
-                    <div class="menu-lead"><span class="menu-title">L'Original</span><span class="menu-dots"></span><span class="menu-price">42 Dh</span></div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-lead"><span class="menu-title">Chiken</span><span class="menu-dots"></span><span class="menu-price">38 Dh</span></div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-lead"><span class="menu-title">Smoky</span><span class="menu-dots"></span><span class="menu-price">47 Dh</span></div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-lead"><span class="menu-title">Saf-Saf (Double)</span><span class="menu-dots"></span><span class="menu-price">70 Dh</span></div>
-                </div>
+                <div class="col-lg-6">
+                    <section id="tajines">
+                        <div class="section-header"><h2>Authentiques Tajines</h2></div>
+                        <div class="menu-item">
+                            <div class="menu-lead"><span class="menu-title">Tajine Poulet</span><span class="menu-dots"></span><span class="menu-price">45 | 80 | 160 Dh</span></div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-lead"><span class="menu-title">Tajine Viande</span><span class="menu-dots"></span><span class="menu-price">50 | 100 | 220 Dh</span></div>
+                        </div>
+                    </section>
 
-                <div class="section-header mt-5"><h2>Nos Tajines</h2></div>
-                <div class="menu-item">
-                    <div class="menu-lead"><span class="menu-title">Tajine Poulet</span><span class="menu-dots"></span><span class="menu-price">45 | 80 | 160 Dh</span></div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-lead"><span class="menu-title">Tajine Viande</span><span class="menu-dots"></span><span class="menu-price">50 | 100 | 220 Dh</span></div>
+                    <section id="grillades" class="mt-5">
+                        <div class="section-header"><h2>Grillades & Pizzas</h2></div>
+                        <div class="menu-item">
+                            <div class="menu-lead"><span class="menu-title">Mixed Grill</span><span class="menu-dots"></span><span class="menu-price">80 Dh</span></div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-lead"><span class="menu-title">Côtelette</span><span class="menu-dots"></span><span class="menu-price">70 Dh</span></div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-lead"><span class="menu-title">Pizza Fruits de mer / 4 Fromages</span><span class="menu-dots"></span><span class="menu-price">50 | 80 Dh</span></div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-lead"><span class="menu-title">Pizza Bolognaise / Chicken</span><span class="menu-dots"></span><span class="menu-price">45 | 60 Dh</span></div>
+                        </div>
+                    </section>
                 </div>
             </div>
 
-            <div class="col-lg-6">
-                <div class="section-header"><h2>Grillades & Pizzas</h2></div>
-                <div class="menu-item">
-                    <div class="menu-lead"><span class="menu-title">Mixed Grill</span><span class="menu-dots"></span><span class="menu-price">80 Dh</span></div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-lead"><span class="menu-title">Côtelette</span><span class="menu-dots"></span><span class="menu-price">70 Dh</span></div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-lead"><span class="menu-title">Pizza Fruits de mer / 4 Fromages</span><span class="menu-dots"></span><span class="menu-price">50 | 80 Dh</span></div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-lead"><span class="menu-title">Pizza Bolognaise / Chicken</span><span class="menu-dots"></span><span class="menu-price">45 | 60 Dh</span></div>
-                </div>
-
-                <div class="section-header mt-5"><h2>Suppléments</h2></div>
-                <div class="menu-item">
-                    <div class="menu-lead"><span class="menu-title">Briwates</span><span class="menu-dots"></span><span class="menu-price">30 Dh</span></div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-lead"><span class="menu-title">Bakkoula / Riz / Fèves</span><span class="menu-dots"></span><span class="menu-price">10 Dh</span></div>
-                </div>
-
-                <div class="section-header mt-5"><h2>Desserts</h2></div>
-                <div class="menu-item">
-                    <div class="menu-lead"><span class="menu-title">Tiramisu</span><span class="menu-dots"></span><span class="menu-price">22 Dh</span></div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-lead"><span class="menu-title">Raib Fruits Secs</span><span class="menu-dots"></span><span class="menu-price">24 Dh</span></div>
+            <div class="row justify-content-center mt-5">
+                <div class="col-lg-8">
+                    <section id="desserts">
+                        <div class="section-header"><h2>Douceurs & Suppléments</h2></div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="menu-item">
+                                    <div class="menu-lead"><span class="menu-title">Tiramisu</span><span class="menu-dots"></span><span class="menu-price">22 Dh</span></div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="menu-lead"><span class="menu-title">Raib Fruits Secs</span><span class="menu-dots"></span><span class="menu-price">24 Dh</span></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="menu-item">
+                                    <div class="menu-lead"><span class="menu-title">Briwates</span><span class="menu-dots"></span><span class="menu-price">30 Dh</span></div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="menu-lead"><span class="menu-title">Bakkoula / Riz / Fèves</span><span class="menu-dots"></span><span class="menu-price">10 Dh</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>
     </div>
 
-     <footer>
+    <footer>
         <div class="container text-center">
-            <h3 class="text-white mb-4">SAF-SAF OUJDA</h3>
-            <p class="mb-4">
-                <p class="mb-4">
-    <i class="fas fa-map-marker-alt me-2"></i> Oujda, Oriental, Maroc<br>
-    <a href="tel:0536532828" style="text-decoration: none; color: var(--saf-gold);">
+            <h2 class="mb-4 fw-bold">SAF-SAF</h2>
+            <div class="row justify-content-center g-4 mb-5">
+                <div class="col-md-3">
+                    <i class="fas fa-map-marker-alt mb-3 fs-3 text-gold" style="color:var(--saf-gold)"></i>
+                    <p>Oujda, Oriental, Maroc</p>
+                </div>
+                <div class="col-md-3">
+                     <a href="tel:0536532828" style="text-decoration: none; color: var(--saf-gold);">
     <i class="fas fa-phone me-2"></i> 05 36 53 28 28
 </a><br>
-    <i class="fas fa-clock me-2"></i> <span style="color: var(--saf-gold);">Lun - Dim: 08:00 - 01:00</span>
-</p>
-            </p>
+
+                </div>
+                <div class="col-md-3">
+                    <i class="fas fa-clock mb-3 fs-3 text-gold" style="color:var(--saf-gold)"></i>
+                    <p>08:00 - 01:00</p>
+                </div>
+            </div>
+
             <div class="social-links mb-5">
                 <a href="#" class="text-white mx-3 fs-4"><i class="fab fa-facebook"></i></a>
                 <a href="#" class="text-white mx-3 fs-4"><i class="fab fa-instagram"></i></a>
                 <a href="#" class="text-white mx-3 fs-4"><i class="fab fa-whatsapp"></i></a>
             </div>
             
-           <div class="dev-credit">
-    Designed & Developed by <span class="dev-name" style="color: var(--saf-gold);">SUHAYB DAWSON</span>
-</div>
+            <div class="dev-credit">
+                DESIGNED & DEVELOPED BY <span class="fw-bold" style="color: var(--saf-gold);">SUHAYB DAWSON</span>
+            </div>
         </div>
     </footer>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
