@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café Restaurant SAF-SAF Oujda | Site Officiel</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --saf-green: #2d5a27;
+            --saf-gold: #c5a059;
+            --saf-cream: #fdfbf7;
+            --saf-dark: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--saf-cream);
+            color: var(--saf-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+
+        /* Navigation */
+        .navbar {
+            background-color: white;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding: 1rem 0;
+        }
+        .navbar-brand {
+            color: var(--saf-green) !important;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        /* Hero Banner with your image */
+        .hero-banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.795), rgba(0, 0, 0, 0.86)), 
+                        url('restoooo.jpeg'); /* Make sure this file is in the same folder as this HTML file */
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        /* Dot-Leader Item Style */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--saf-green);
+            display: inline-block;
+            background: var(--saf-cream);
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .section-header::after {
+            content: "";
+            position: absolute;
+            top: 50%; left: 0; width: 100%; height: 1px;
+            background: #ddd; z-index: 0;
+        }
+
+        .menu-item { margin-bottom: 1.2rem; }
+        .menu-lead {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            position: relative;
+            overflow: hidden;
+        }
+        .menu-title {
+            font-weight: 600;
+            background: var(--saf-cream);
+            padding-right: 12px;
+            z-index: 1;
+        }
+        .menu-dots {
+            flex-grow: 1;
+            border-bottom: 1px dotted #aaa;
+            margin: 0 5px;
+            position: relative;
+            top: -4px;
+        }
+        .menu-price {
+            font-weight: 700;
+            color: var(--saf-gold);
+            background: var(--saf-cream);
+            padding-left: 12px;
+            z-index: 1;
+        }
+        .menu-sub { font-size: 0.85rem; color: #666; font-style: italic; }
+
+        /* Highlight Section */
+        .highlight-box {
+            background: white;
+            border: 1px solid var(--saf-gold);
+            padding: 2.5rem;
+            border-radius: 4px;
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        footer {
+            background-color: var(--saf-dark);
+            color: #999;
+            padding: 4rem 0 2rem;
+            margin-top: 5rem;
+        }
+        .dev-credit { font-size: 0.75rem; letter-spacing: 2px; margin-top: 2rem; border-top: 1px solid #333; padding-top: 1.5rem; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar sticky-top">
+        <div class="container text-center">
+            <a class="navbar-brand mx-auto" href="#">SAF-SAF OUJDA</a>
+        </div>
+    </nav>
+
+    <header class="hero-banner">
+        <div class="container">
+            <h1 class="display-3 mb-2">L’Art de la Cuisine Marocaine</h1>
+            <p class="lead text-uppercase" style="letter-spacing: 3px; color: var(--saf-gold);">Tradition servie avec passion</p>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <div class="highlight-box">
+            <h4 class="text-uppercase mb-4" style="color: var(--saf-gold); letter-spacing: 4px;">Seulement Vendredi</h4>
+            <div class="row">
+                <div class="col-md-4"><strong>Couscous + Lben</strong><br><span style="color:var(--saf-gold)">55 Dh</span></div>
+                <div class="col-md-4 border-start border-end"><strong>Couscous Viande</strong><br><span style="color:var(--saf-gold)">55 Dh</span></div>
+                <div class="col-md-4"><strong>Couscous Poulet</strong><br><span style="color:var(--saf-gold)">45 Dh</span></div>
+            </div>
+        </div>
+
+        <div class="row g-5">
+            <div class="col-lg-6">
+                <div class="section-header"><h2>Salades & Entrées</h2></div>
+                <div class="menu-item">
+                    <div class="menu-lead"><span class="menu-title">Salade Variée</span><span class="menu-dots"></span><span class="menu-price">37 Dh</span></div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-lead"><span class="menu-title">Salade Marocaine</span><span class="menu-dots"></span><span class="menu-price">20 Dh</span></div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-lead"><span class="menu-title">Harira Complet</span><span class="menu-dots"></span><span class="menu-price">18 Dh</span></div>
+                    <span class="menu-sub">+ Chebakiya, Tmer, Oeuf dur</span>
+                </div>
+
+                <div class="section-header mt-5"><h2>Burgers</h2></div>
+                <div class="menu-item">
+                    <div class="menu-lead"><span class="menu-title">L'Original</span><span class="menu-dots"></span><span class="menu-price">42 Dh</span></div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-lead"><span class="menu-title">Chiken</span><span class="menu-dots"></span><span class="menu-price">38 Dh</span></div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-lead"><span class="menu-title">Smoky</span><span class="menu-dots"></span><span class="menu-price">47 Dh</span></div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-lead"><span class="menu-title">Saf-Saf (Double)</span><span class="menu-dots"></span><span class="menu-price">70 Dh</span></div>
+                </div>
+
+                <div class="section-header mt-5"><h2>Nos Tajines</h2></div>
+                <div class="menu-item">
+                    <div class="menu-lead"><span class="menu-title">Tajine Poulet</span><span class="menu-dots"></span><span class="menu-price">45 | 80 | 160 Dh</span></div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-lead"><span class="menu-title">Tajine Viande</span><span class="menu-dots"></span><span class="menu-price">50 | 100 | 220 Dh</span></div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="section-header"><h2>Grillades & Pizzas</h2></div>
+                <div class="menu-item">
+                    <div class="menu-lead"><span class="menu-title">Mixed Grill</span><span class="menu-dots"></span><span class="menu-price">80 Dh</span></div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-lead"><span class="menu-title">Côtelette</span><span class="menu-dots"></span><span class="menu-price">70 Dh</span></div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-lead"><span class="menu-title">Pizza Fruits de mer / 4 Fromages</span><span class="menu-dots"></span><span class="menu-price">50 | 80 Dh</span></div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-lead"><span class="menu-title">Pizza Bolognaise / Chicken</span><span class="menu-dots"></span><span class="menu-price">45 | 60 Dh</span></div>
+                </div>
+
+                <div class="section-header mt-5"><h2>Suppléments</h2></div>
+                <div class="menu-item">
+                    <div class="menu-lead"><span class="menu-title">Briwates</span><span class="menu-dots"></span><span class="menu-price">30 Dh</span></div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-lead"><span class="menu-title">Bakkoula / Riz / Fèves</span><span class="menu-dots"></span><span class="menu-price">10 Dh</span></div>
+                </div>
+
+                <div class="section-header mt-5"><h2>Desserts</h2></div>
+                <div class="menu-item">
+                    <div class="menu-lead"><span class="menu-title">Tiramisu</span><span class="menu-dots"></span><span class="menu-price">22 Dh</span></div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-lead"><span class="menu-title">Raib Fruits Secs</span><span class="menu-dots"></span><span class="menu-price">24 Dh</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <footer>
+        <div class="container text-center">
+            <h3 class="text-white mb-4">SAF-SAF OUJDA</h3>
+            <p class="mb-4">
+                <i class="fas fa-map-marker-alt me-2"></i> Oujda, Oriental, Maroc<br>
+                <i class="fas fa-clock me-2"></i> <span style="color: var(--saf-gold);">Ouvert tous les jours</span>
+            </p>
+            <div class="social-links mb-5">
+                <a href="#" class="text-white mx-3 fs-4"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-white mx-3 fs-4"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white mx-3 fs-4"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            
+            <div class="dev-credit">
+                Designed & Developed by <span class="dev-name">SUHAYB DAWSON</span>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+</html>
