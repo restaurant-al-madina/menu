@@ -1,297 +1,1742 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAF-SAF OUJDA | Excellence Culinaire</title>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مطعم المدينة | Restaurant Al Madina</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@300;400;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #1a6b7a;
+    --teal-dark: #0f4a57;
+    --teal-light: #2a8a9a;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #f5f0e8;
+    --cream-dark: #e8dfc8;
+    --white: #fff;
+    --text-dark: #1a1a1a;
+  }
 
-    <style>
-        :root {
-            --saf-green: #1e3d1a;
-            --saf-gold: #c5a059;
-            --saf-cream: #fdfbf7;
-            --saf-dark: #0f0f0f;
-            --glass: rgba(255, 255, 255, 0.95);
-        }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--saf-cream);
-            color: var(--saf-dark);
-            overflow-x: hidden;
-        }
+  body {
+    background: var(--cream);
+    color: var(--text-dark);
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+  }
 
-        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+  /* ——— HERO ——— */
+  .hero {
+    background: var(--teal-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
 
-        /* HERO SECTION - MOBILE OPTIMIZED */
-        .hero-banner {
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), 
-                        url('restoooo.jpeg');
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-attachment: fixed; /* Desktop Parallax */
-            height: 70vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-            /* Modern curved bottom */
-            clip-path: ellipse(150% 100% at 50% 0%);
-        }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 20% 20%, rgba(201,168,76,0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(201,168,76,0.08) 0%, transparent 50%);
+  }
 
-        /* Fix for mobile background image */
-        @media (max-width: 768px) {
-            .hero-banner {
-                background-attachment: scroll; /* Disables glitchy parallax on mobile */
-                height: 50vh;
-                clip-path: ellipse(180% 100% at 50% 0%);
-            }
-            .hero-content h1 {
-                font-size: 2.8rem !important;
-                letter-spacing: 4px !important;
-            }
-        }
+  /* Moroccan geometric pattern overlay */
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 5 L55 20 L55 40 L30 55 L5 40 L5 20Z' fill='none' stroke='%23c9a84c' stroke-width='1'/%3E%3Cpath d='M30 15 L45 22 L45 38 L30 45 L15 38 L15 22Z' fill='none' stroke='%23c9a84c' stroke-width='0.5'/%3E%3C/svg%3E");
+  }
 
-        .hero-content h1 {
-            font-size: clamp(3rem, 8vw, 5rem);
-            letter-spacing: 8px;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.4);
-        }
+  .hero-border {
+    position: absolute;
+    inset: 20px;
+    border: 1px solid rgba(201,168,76,0.3);
+    pointer-events: none;
+  }
+  .hero-border::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(201,168,76,0.15);
+  }
 
-        /* MENU CONTENT AREA */
-        .menu-wrapper {
-            max-width: 1000px;
-            margin: -60px auto 100px;
-            background: white;
-            padding: 50px 30px;
-            border-radius: 25px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
-            position: relative;
-            z-index: 10;
-        }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 2rem;
+    animation: fadeInUp 1.2s ease both;
+  }
 
-        /* Friday Special Section */
-        .friday-special {
-            background: var(--saf-green);
-            color: white;
-            padding: 30px;
-            border-radius: 20px;
-            margin-bottom: 50px;
-            box-shadow: 0 15px 35px rgba(30, 61, 26, 0.3);
-            text-align: center;
-            border: 1px solid var(--saf-gold);
-        }
+  .hero-logo {
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 2rem;
+    position: relative;
+  }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 3.5rem;
-        }
-        .section-header h2 {
-            font-size: 2.2rem;
-            color: var(--saf-green);
-            position: relative;
-            padding-bottom: 10px;
-        }
-        .section-header h2::after {
-            content: "";
-            width: 40px;
-            height: 3px;
-            background: var(--saf-gold);
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+  .logo-svg {
+    width: 100%;
+    height: 100%;
+    fill: var(--gold);
+    filter: drop-shadow(0 0 20px rgba(201,168,76,0.3));
+  }
 
-        /* Menu Items Stylized */
-        .menu-item { margin-bottom: 1.8rem; }
-        .menu-lead {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-        }
-        .menu-title {
-            font-weight: 700;
-            font-size: 1.05rem;
-            color: #222;
-        }
-        .menu-dots {
-            flex-grow: 1;
-            border-bottom: 1px dotted #ccc;
-            margin: 0 10px;
-        }
-        .menu-price {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            color: var(--saf-gold);
-        }
-        .menu-sub { font-size: 0.85rem; color: #777; font-style: italic; display: block; }
+  .hero-title-ar {
+    font-family: 'Amiri', serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    color: var(--gold);
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    text-shadow: 0 2px 20px rgba(201,168,76,0.3);
+    margin-bottom: 0.3rem;
+  }
 
-        /* Footer Stylized */
-        footer {
-            background: var(--saf-dark);
-            color: #ddd;
-            padding: 80px 0 40px;
-            margin-top: 50px;
-        }
-        .dev-credit { 
-            margin-top: 40px;
-            padding-top: 25px;
-            border-top: 1px solid #333;
-            font-size: 0.7rem;
-            letter-spacing: 3px;
-            color: #666;
-        }
-        .social-links a {
-            display: inline-block;
-            width: 45px;
-            height: 45px;
-            line-height: 45px;
-            border: 1px solid #444;
-            border-radius: 50%;
-            color: white;
-            transition: 0.3s;
-        }
-        .social-links a:hover {
-            border-color: var(--saf-gold);
-            color: var(--saf-gold);
-            transform: translateY(-3px);
-        }
+  .hero-title-en {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    color: var(--cream);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
 
-        @media (max-width: 576px) {
-            .menu-wrapper { margin: -40px 15px 50px; padding: 30px 15px; }
-            .section-header h2 { font-size: 1.8rem; }
-            .menu-price { font-size: 0.95rem; }
-        }
-    </style>
+  .hero-tagline {
+    font-family: 'Amiri', serif;
+    font-size: 1.1rem;
+    color: rgba(245,240,232,0.6);
+    margin-bottom: 3rem;
+    font-style: italic;
+  }
+
+  .hero-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+
+  .hero-divider span {
+    display: block;
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold));
+  }
+  .hero-divider span:last-child {
+    background: linear-gradient(to left, transparent, var(--gold));
+  }
+
+  .hero-divider-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  .scroll-hint {
+    color: rgba(245,240,232,0.4);
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    animation: pulse 2s infinite;
+  }
+
+  /* ——— NAV ——— */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--teal-dark);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  nav::-webkit-scrollbar { display: none; }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    min-width: max-content;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .nav-btn {
+    background: none;
+    border: none;
+    color: rgba(245,240,232,0.65);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 1rem 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    white-space: nowrap;
+  }
+
+  .nav-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width 0.3s;
+  }
+
+  .nav-btn:hover, .nav-btn.active {
+    color: var(--gold);
+  }
+
+  .nav-btn:hover::after, .nav-btn.active::after {
+    width: 60%;
+  }
+
+  /* ——— MAIN ——— */
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+  }
+
+  /* ——— SECTION ——— */
+  .menu-section {
+    padding: 4rem 0 2rem;
+    display: none;
+    animation: fadeInUp 0.5s ease both;
+  }
+
+  .menu-section.active { display: block; }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+
+  .section-title-ar {
+    font-family: 'Amiri', serif;
+    font-size: 2.8rem;
+    color: var(--teal-dark);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .section-title-fr {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--teal);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: block;
+  }
+
+  .section-line {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    justify-content: center;
+    margin-top: 1.2rem;
+  }
+
+  .section-line::before, .section-line::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 60px;
+    background: var(--gold);
+  }
+
+  .section-diamond {
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    transform: rotate(45deg);
+  }
+
+  /* ——— SPECIAL NOTE ——— */
+  .special-note {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--gold);
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+    opacity: 0.85;
+  }
+
+  /* ——— SUBSECTION ——— */
+  .subsection {
+    margin-bottom: 3rem;
+  }
+
+  .subsection-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--teal);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid var(--cream-dark);
+  }
+
+  /* ——— MENU ITEM ——— */
+  .menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(26,107,122,0.1);
+    gap: 1rem;
+    transition: all 0.2s;
+  }
+
+  .menu-item:hover {
+    background: rgba(201,168,76,0.04);
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 4px;
+  }
+
+  .menu-item:last-child { border-bottom: none; }
+
+  .item-left { flex: 1; }
+
+  .item-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--teal-dark);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .item-desc {
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  .item-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--gold);
+    font-weight: 600;
+    white-space: nowrap;
+    letter-spacing: 0.05em;
+  }
+
+  /* Chicken sizes */
+  .item-sizes {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .size-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.82rem;
+    color: #666;
+  }
+
+  .size-label {
+    color: #888;
+    font-style: italic;
+  }
+
+  .size-price {
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  /* ——— TWO COLUMN GRID ——— */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem 3rem;
+  }
+
+  @media (max-width: 600px) {
+    .two-col { grid-template-columns: 1fr; gap: 0; }
+  }
+
+  
+
+  .col-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--teal-dark);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--gold);
+  }
+
+  /* ——— WEEKLY SPECIAL ——— */
+  .weekly-card {
+    background: var(--teal-dark);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .weekly-card::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.08);
+  }
+
+  .weekly-day {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .weekly-name-ar {
+    font-family: 'Amiri', serif;
+    font-size: 2rem;
+    color: var(--cream);
+    display: block;
+    margin-bottom: 0.1rem;
+  }
+
+  .weekly-name-fr {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--gold-light);
+    font-style: italic;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .weekly-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .weekly-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.06);
+    border-radius: 4px;
+    padding: 0.4rem 0.8rem;
+    min-width: 180px;
+    flex: 1;
+  }
+
+  .weekly-item-name { font-size: 0.9rem; color: var(--cream); }
+  .weekly-item-price { font-size: 0.9rem; color: var(--gold); font-weight: 600; }
+
+  .weekly-note {
+    font-size: 0.8rem;
+    color: rgba(245,240,232,0.5);
+    font-style: italic;
+    margin-top: 0.8rem;
+  }
+
+  /* ——— DRINKS GRID ——— */
+  .drinks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0;
+  }
+
+  .drink-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0.5rem;
+    border-bottom: 1px solid rgba(26,107,122,0.1);
+    transition: background 0.2s;
+  }
+
+  .drink-item:hover { background: rgba(201,168,76,0.05); }
+
+  .drink-name { font-size: 1rem; color: var(--teal-dark); }
+  .drink-price { color: var(--gold); font-weight: 600; font-size: 0.9rem; }
+
+  /* ——— FOOTER ——— */
+  footer {
+    background: var(--teal-dark);
+    color: var(--cream);
+    text-align: center;
+    padding: 3rem 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .footer-logo {
+    font-family: 'Amiri', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-sub {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.5);
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-ig {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--gold-light);
+    font-size: 0.9rem;
+    text-decoration: none;
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 0.5rem 1.2rem;
+    border-radius: 30px;
+    transition: all 0.3s;
+  }
+
+  .footer-ig:hover {
+    background: rgba(201,168,76,0.1);
+    border-color: var(--gold);
+  }
+
+  /* ——— ANIMATIONS ——— */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50%       { opacity: 0.8; }
+  }
+
+  /* ——— MOBILE ——— */
+  @media (max-width: 480px) {
+    .item-sizes { gap: 0.8rem; }
+    .weekly-item { min-width: 140px; }
+  }
+
+  /* ================================================================
+     ORDERING SYSTEM STYLES
+     ================================================================ */
+
+  /* ——— ADD TO CART BUTTON on each menu item ——— */
+  .add-btn {
+    background: none;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+  }
+  .add-btn:hover {
+    background: var(--gold);
+    color: var(--teal-dark);
+    transform: scale(1.1);
+  }
+  .add-btn:active { transform: scale(0.95); }
+
+  /* size-specific add buttons inside .item-sizes */
+  .size-add-btn {
+    background: none;
+    border: 1px solid rgba(201,168,76,0.5);
+    color: var(--gold);
+    border-radius: 20px;
+    padding: 0.15rem 0.55rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .size-add-btn:hover {
+    background: var(--gold);
+    color: var(--teal-dark);
+  }
+
+  /* ——— FLOATING CART BAR ——— */
+  #cart-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    background: var(--teal-dark);
+    border-top: 2px solid var(--gold);
+    display: none; /* hidden until items added */
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1.5rem;
+    gap: 1rem;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+  }
+  #cart-bar.visible { display: flex; }
+
+  #cart-summary {
+    color: var(--cream);
+    font-size: 0.95rem;
+    flex: 1;
+  }
+  #cart-summary strong {
+    color: var(--gold);
+  }
+
+  #cart-order-btn {
+    background: var(--gold);
+    color: var(--teal-dark);
+    border: none;
+    padding: 0.65rem 1.4rem;
+    border-radius: 30px;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.15s;
+  }
+  #cart-order-btn:hover { background: var(--gold-light); transform: scale(1.03); }
+
+  #cart-clear-btn {
+    background: none;
+    border: 1px solid rgba(245,240,232,0.3);
+    color: rgba(245,240,232,0.5);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  #cart-clear-btn:hover { border-color: #e57373; color: #e57373; }
+
+  /* ——— MODAL OVERLAY ——— */
+  #order-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    background: rgba(10, 35, 42, 0.85);
+    backdrop-filter: blur(4px);
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  #order-modal.open { display: flex; }
+
+  /* ——— MODAL BOX ——— */
+  .modal-box {
+    background: var(--cream);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    animation: modalSlideUp 0.3s ease both;
+  }
+  @keyframes modalSlideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .modal-header {
+    background: var(--teal-dark);
+    padding: 1.4rem 1.5rem;
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .modal-title {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 1.3rem;
+    letter-spacing: 0.05em;
+  }
+  .modal-close {
+    background: none;
+    border: none;
+    color: rgba(245,240,232,0.6);
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0.2rem 0.4rem;
+    transition: color 0.2s;
+  }
+  .modal-close:hover { color: var(--cream); }
+
+  .modal-body { padding: 1.5rem; }
+
+  /* ——— ORDER TYPE SELECTOR ——— */
+  .type-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+  }
+  .type-btn {
+    background: none;
+    border: 1.5px solid var(--cream-dark);
+    border-radius: 8px;
+    padding: 0.7rem 0.3rem;
+    cursor: pointer;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    color: #555;
+    text-align: center;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .type-btn .type-icon { font-size: 1.4rem; }
+  .type-btn:hover { border-color: var(--teal); color: var(--teal); }
+  .type-btn.selected {
+    border-color: var(--teal-dark);
+    background: var(--teal-dark);
+    color: var(--gold);
+  }
+
+  /* ——— FORM FIELDS ——— */
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  .form-group label {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    color: var(--teal-dark);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    border: 1.5px solid var(--cream-dark);
+    border-radius: 6px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--text-dark);
+    background: #fff;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus { border-color: var(--teal); }
+  .form-group textarea { resize: vertical; min-height: 70px; }
+
+  /* ——— CART REVIEW IN MODAL ——— */
+  .modal-cart-review {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.2rem;
+    border: 1px solid var(--cream-dark);
+  }
+  .modal-cart-review h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--teal);
+    margin-bottom: 0.7rem;
+  }
+  .modal-cart-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.3rem 0;
+    border-bottom: 1px solid var(--cream-dark);
+    font-size: 0.92rem;
+    gap: 0.5rem;
+  }
+  .modal-cart-row:last-child { border-bottom: none; }
+  .modal-cart-row .row-name { flex: 1; color: #444; }
+  .modal-cart-row .row-qty {
+    color: var(--teal);
+    font-weight: 600;
+    min-width: 24px;
+    text-align: center;
+  }
+  .modal-cart-row .row-price { color: var(--gold); font-weight: 600; }
+  .modal-cart-row .row-remove {
+    background: none;
+    border: none;
+    color: #ccc;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0 0.2rem;
+    transition: color 0.2s;
+  }
+  .modal-cart-row .row-remove:hover { color: #e57373; }
+  .modal-total {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-top: 0.7rem;
+    padding-top: 0.5rem;
+    border-top: 2px solid var(--teal-dark);
+    color: var(--teal-dark);
+  }
+  .modal-total span { color: var(--gold); }
+
+  /* ——— ERROR MESSAGE ——— */
+  .form-error {
+    background: #fff0f0;
+    border: 1px solid #e57373;
+    color: #c62828;
+    border-radius: 6px;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.88rem;
+    margin-bottom: 1rem;
+    display: none;
+  }
+  .form-error.visible { display: block; }
+
+  /* ——— SUBMIT BUTTON ——— */
+  .whatsapp-btn {
+    width: 100%;
+    background: #25D366;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.9rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    letter-spacing: 0.05em;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .whatsapp-btn:hover { background: #1ebe5c; transform: scale(1.01); }
+  .whatsapp-btn svg { flex-shrink: 0; }
+
+  /* add bottom padding when cart bar is visible */
+  body.cart-open main { padding-bottom: 5rem; }
+</style>
 </head>
 <body>
 
-    <header class="hero-banner">
-        <div class="hero-content">
-            <h1 class="display-3">SAF-SAF</h1>
-            <p class="lead text-uppercase" style="letter-spacing: 6px; color: var(--saf-gold);">L’Art de la Cuisine Marocaine</p>
-        </div>
-    </header>
-
-    <div class="container">
-        <div class="menu-wrapper">
-            
-            <div class="friday-special">
-                <h4 class="text-uppercase mb-4" style="letter-spacing: 4px;">Spécial Vendredi</h4>
-                <div class="row g-3">
-                    <div class="col-6 col-md-4">
-                        <small class="d-block text-uppercase" style="opacity:0.7">Couscous + Lben</small>
-                        <span class="fw-bold">55 Dh</span>
-                    </div>
-                    <div class="col-6 col-md-4">
-                        <small class="d-block text-uppercase" style="opacity:0.7">Couscous Viande</small>
-                        <span class="fw-bold">55 Dh</span>
-                    </div>
-                    <div class="col-12 col-md-4 mt-3 mt-md-0">
-                        <small class="d-block text-uppercase" style="opacity:0.7">Couscous Poulet</small>
-                        <span class="fw-bold">45 Dh</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row g-md-5">
-                <div class="col-lg-6">
-                    <div class="section-header"><h2>Salades & Entrées</h2></div>
-                    <div class="menu-item">
-                        <div class="menu-lead"><span class="menu-title">Salade Variée</span><span class="menu-dots"></span><span class="menu-price">37 Dh</span></div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-lead"><span class="menu-title">Salade Marocaine</span><span class="menu-dots"></span><span class="menu-price">20 Dh</span></div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-lead"><span class="menu-title">Harira Complet</span><span class="menu-dots"></span><span class="menu-price">18 Dh</span></div>
-                        <span class="menu-sub">+ Chebakiya, Tmer, Oeuf dur</span>
-                    </div>
-
-                    <div class="section-header mt-5"><h2>Burgers</h2></div>
-                    <div class="menu-item">
-                        <div class="menu-lead"><span class="menu-title">L'Original</span><span class="menu-dots"></span><span class="menu-price">42 Dh</span></div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-lead"><span class="menu-title">Chiken</span><span class="menu-dots"></span><span class="menu-price">38 Dh</span></div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-lead"><span class="menu-title">Smoky</span><span class="menu-dots"></span><span class="menu-price">47 Dh</span></div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-lead"><span class="menu-title">Saf-Saf (Double)</span><span class="menu-dots"></span><span class="menu-price">70 Dh</span></div>
-                    </div>
-
-                    <div class="section-header mt-5"><h2>Nos Tajines</h2></div>
-                    <div class="menu-item">
-                        <div class="menu-lead"><span class="menu-title">Tajine Poulet</span><span class="menu-dots"></span><span class="menu-price">45 | 80 | 160 Dh</span></div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-lead"><span class="menu-title">Tajine Viande</span><span class="menu-dots"></span><span class="menu-price">50 | 100 | 220 Dh</span></div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6">
-                    <div class="section-header mt-5 mt-lg-0"><h2>Grillades & Pizzas</h2></div>
-                    <div class="menu-item">
-                        <div class="menu-lead"><span class="menu-title">Mixed Grill</span><span class="menu-dots"></span><span class="menu-price">80 Dh</span></div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-lead"><span class="menu-title">Côtelette</span><span class="menu-dots"></span><span class="menu-price">70 Dh</span></div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-lead"><span class="menu-title">Pizza Fruits de mer / 4 Fromages</span><span class="menu-dots"></span><span class="menu-price">50 | 80 Dh</span></div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-lead"><span class="menu-title">Pizza Bolognaise / Chicken</span><span class="menu-dots"></span><span class="menu-price">45 | 60 Dh</span></div>
-                    </div>
-
-                    <div class="section-header mt-5"><h2>Suppléments</h2></div>
-                    <div class="menu-item">
-                        <div class="menu-lead"><span class="menu-title">Briwates</span><span class="menu-dots"></span><span class="menu-price">30 Dh</span></div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-lead"><span class="menu-title">Bakkoula / Riz / Fèves</span><span class="menu-dots"></span><span class="menu-price">10 Dh</span></div>
-                    </div>
-
-                    <div class="section-header mt-5"><h2>Desserts</h2></div>
-                    <div class="menu-item">
-                        <div class="menu-lead"><span class="menu-title">Tiramisu</span><span class="menu-dots"></span><span class="menu-price">22 Dh</span></div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-lead"><span class="menu-title">Raib Fruits Secs</span><span class="menu-dots"></span><span class="menu-price">24 Dh</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-border"></div>
+  <div class="hero-content">
+    <div class="hero-logo">
+      <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 8 L92 32 L92 68 L50 92 L8 68 L8 32Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M50 18 L82 36 L82 64 L50 82 L18 64 L18 36Z" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.5"/>
+        <circle cx="50" cy="50" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M50 30 C58 38 68 42 68 50 C68 58 58 62 50 70 C42 62 32 58 32 50 C32 42 42 38 50 30Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <circle cx="50" cy="50" r="4" fill="currentColor"/>
+        <line x1="50" y1="8" x2="50" y2="28" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+        <line x1="50" y1="72" x2="50" y2="92" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+        <line x1="8" y1="50" x2="28" y2="50" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+        <line x1="72" y1="50" x2="92" y2="50" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+      </svg>
     </div>
 
-    <footer class="text-center">
-        <div class="container">
-            <h3 class="mb-4">SAF-SAF OUJDA</h3>
-            <p><i class="fas fa-map-marker-alt me-2"></i> Oujda, Oriental, Maroc</p>
-            <p><a href="tel:0536532828" class="text-white text-decoration-none"><i class="fas fa-phone me-2"></i> <span style="color: var(--saf-gold);">05 36 53 28 28</span></a></p>
-            <p class="mb-5"><i class="fas fa-clock me-2"></i> <span style="color:var(--saf-gold)">08:00 - 01:00</span></p>
+    <div class="hero-title-ar">مطعم المدينة</div>
+    <div class="hero-title-en">Restaurant Al Madina</div>
 
-            <div class="social-links mb-4">
-                <a href="#" class="mx-2"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="mx-2"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="mx-2"><i class="fab fa-whatsapp"></i></a>
-            </div>
-            
-            <div class="dev-credit">
-                DESIGNED & DEVELOPED BY <span style="color: var(--saf-gold); font-weight: 700;">SUHAYB DAWSON</span>
-            </div>
+    <div class="hero-divider">
+      <span></span>
+      <div class="hero-divider-dot"></div>
+      <div class="hero-divider-dot"></div>
+      <div class="hero-divider-dot"></div>
+      <span></span>
+    </div>
+
+    <p class="hero-tagline">مطعمكم المتخصص في الأكل المغربي الأصيل بوجدة</p>
+    <p class="scroll-hint">↓ Découvrez notre menu</p>
+  </div>
+</section>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="showSection('salades')">Salades</button>
+    <button class="nav-btn" onclick="showSection('poulets')">Poulets</button>
+    <button class="nav-btn" onclick="showSection('plats')">Plats</button>
+    <button class="nav-btn" onclick="showSection('tacos-sandwichs')">Tacos & Sandwichs</button>
+    <button class="nav-btn" onclick="showSection('special')">Spécial</button>
+    <button class="nav-btn" onclick="showSection('desserts')">Desserts</button>
+    <button class="nav-btn" onclick="showSection('boissons')">Boissons</button>
+  </div>
+</nav>
+
+<main>
+
+  <!-- SALADES & ENTRÉES -->
+  <section class="menu-section active" id="salades">
+    <div class="section-header">
+      <span class="section-title-ar">سلطة ومقبلات</span>
+      <span class="section-title-fr">Salades & Entrées</span>
+      <div class="section-line"><div class="section-diamond"></div></div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">Salades</div>
+
+      <div class="menu-item" data-name="Salade Marocaine" data-price="10">
+        <div class="item-left">
+          <span class="item-name">Salade Marocaine</span>
         </div>
-    </footer>
+        <span class="item-price">10 Dhs</span>
+        <button class="add-btn" onclick="addToCart('Salade Marocaine', 10)" title="Ajouter">+</button>
+      </div>
+
+      <div class="menu-item" data-name="Salade Niçoise" data-price="20">
+        <div class="item-left">
+          <span class="item-name">Salade Niçoise</span>
+          <span class="item-desc">Salade verte, pomme de terre, haricot vert, betterave, carottes, œuf dur, thon</span>
+        </div>
+        <span class="item-price">20 Dhs</span>
+        <button class="add-btn" onclick="addToCart('Salade Niçoise', 20)" title="Ajouter">+</button>
+      </div>
+
+      <div class="menu-item" data-name="Salade César" data-price="30">
+        <div class="item-left">
+          <span class="item-name">Salade César</span>
+          <span class="item-desc">Salade verte, tomate, escalope de poulet grillée, crouton à l'ail, fromage</span>
+        </div>
+        <span class="item-price">30 Dhs</span>
+        <button class="add-btn" onclick="addToCart('Salade César', 30)" title="Ajouter">+</button>
+      </div>
+
+      <div class="menu-item" data-name="Salade Avocat Crevettes" data-price="35">
+        <div class="item-left">
+          <span class="item-name">Salade Avocat Crevettes</span>
+          <span class="item-desc">Salade verte, crevettes, avocat, tomates, pomme de terre, œuf dur, concombre, maïs</span>
+        </div>
+        <span class="item-price">35 Dhs</span>
+        <button class="add-btn" onclick="addToCart('Salade Avocat Crevettes', 35)" title="Ajouter">+</button>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">Entrée Chaude</div>
+
+      <div class="menu-item" data-name="Harira (avec dates, œuf et Chbakia)" data-price="15">
+        <div class="item-left">
+          <span class="item-name">Harira <em style="font-size:0.85rem;color:#888"> — avec dates, œuf et Chbakia</em></span>
+        </div>
+        <span class="item-price">15 Dhs</span>
+        <button class="add-btn" onclick="addToCart('Harira (avec dates, œuf et Chbakia)', 15)" title="Ajouter">+</button>
+      </div>
+
+      <div class="menu-item" data-name="Harira (seule)" data-price="10">
+        <div class="item-left">
+          <span class="item-name">Harira <em style="font-size:0.85rem;color:#888"> — seule</em></span>
+        </div>
+        <span class="item-price">10 Dhs</span>
+        <button class="add-btn" onclick="addToCart('Harira (seule)', 10)" title="Ajouter">+</button>
+      </div>
+
+      <div class="menu-item" data-name="Loubia" data-price="12">
+        <div class="item-left"><span class="item-name">Loubia</span></div>
+        <span class="item-price">12 Dhs</span>
+        <button class="add-btn" onclick="addToCart('Loubia', 12)" title="Ajouter">+</button>
+      </div>
+
+      <div class="menu-item" data-name="Lentilles (3dess)" data-price="12">
+        <div class="item-left"><span class="item-name">Lentilles (3dess)</span></div>
+        <span class="item-price">12 Dhs</span>
+        <button class="add-btn" onclick="addToCart('Lentilles (3dess)', 12)" title="Ajouter">+</button>
+      </div>
+
+      <div class="menu-item" data-name="Frites" data-price="10">
+        <div class="item-left"><span class="item-name">Frites</span></div>
+        <span class="item-price">10 Dhs</span>
+        <button class="add-btn" onclick="addToCart('Frites', 10)" title="Ajouter">+</button>
+      </div>
+
+      <div class="menu-item" data-name="Za3louk" data-price="8">
+        <div class="item-left"><span class="item-name">Za3louk</span></div>
+        <span class="item-price">8 Dhs</span>
+        <button class="add-btn" onclick="addToCart('Za3louk', 8)" title="Ajouter">+</button>
+      </div>
+
+      <div class="menu-item" data-name="Khoubbiz" data-price="8">
+        <div class="item-left"><span class="item-name">Khoubbiz</span></div>
+        <span class="item-price">8 Dhs</span>
+        <button class="add-btn" onclick="addToCart('Khoubbiz', 8)" title="Ajouter">+</button>
+      </div>
+
+      <div class="menu-item" data-name="Felfel Matecha" data-price="8">
+        <div class="item-left"><span class="item-name">Felfel Matecha</span></div>
+        <span class="item-price">8 Dhs</span>
+        <button class="add-btn" onclick="addToCart('Felfel Matecha', 8)" title="Ajouter">+</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- POULETS -->
+  <section class="menu-section" id="poulets">
+    <div class="section-header">
+      <span class="section-title-ar">دجــاج</span>
+      <span class="section-title-fr">Poulets</span>
+      <div class="section-line"><div class="section-diamond"></div></div>
+    </div>
+
+    <div class="menu-item">
+      <div class="item-left">
+        <span class="item-name">Poulet Roti <em style="font-size:0.85rem;color:#888;font-style:italic"> — avec accompagnements</em></span>
+        <div class="item-sizes">
+          <div class="size-badge"><span class="size-label">quart</span><span class="size-price">30 Dhs</span><button class="size-add-btn" onclick="addToCart('Poulet Roti (quart)', 30)">+ Ajouter</button></div>
+          <div class="size-badge"><span class="size-label">demi</span><span class="size-price">60 Dhs</span><button class="size-add-btn" onclick="addToCart('Poulet Roti (demi)', 60)">+ Ajouter</button></div>
+          <div class="size-badge"><span class="size-label">entier</span><span class="size-price">120 Dhs</span><button class="size-add-btn" onclick="addToCart('Poulet Roti (entier)', 120)">+ Ajouter</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="item-left">
+        <span class="item-name">Poulet au Olives et Frites</span>
+        <div class="item-sizes">
+          <div class="size-badge"><span class="size-label">quart</span><span class="size-price">30 Dhs</span><button class="size-add-btn" onclick="addToCart('Poulet Olives & Frites (quart)', 30)">+ Ajouter</button></div>
+          <div class="size-badge"><span class="size-label">demi</span><span class="size-price">60 Dhs</span><button class="size-add-btn" onclick="addToCart('Poulet Olives & Frites (demi)', 60)">+ Ajouter</button></div>
+          <div class="size-badge"><span class="size-label">entier</span><span class="size-price">120 Dhs</span><button class="size-add-btn" onclick="addToCart('Poulet Olives & Frites (entier)', 120)">+ Ajouter</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="item-left">
+        <span class="item-name">Poulet aux Légumes</span>
+        <span class="item-desc">Pomme de terre, carottes, courgettes, 1 légume de saison</span>
+        <div class="item-sizes">
+          <div class="size-badge"><span class="size-label">quart</span><span class="size-price">30 Dhs</span><button class="size-add-btn" onclick="addToCart('Poulet aux Légumes (quart)', 30)">+ Ajouter</button></div>
+          <div class="size-badge"><span class="size-label">demi</span><span class="size-price">60 Dhs</span><button class="size-add-btn" onclick="addToCart('Poulet aux Légumes (demi)', 60)">+ Ajouter</button></div>
+          <div class="size-badge"><span class="size-label">entier</span><span class="size-price">120 Dhs</span><button class="size-add-btn" onclick="addToCart('Poulet aux Légumes (entier)', 120)">+ Ajouter</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="item-left">
+        <span class="item-name">Poulet Beldi</span>
+        <div class="item-sizes">
+          <div class="size-badge"><span class="size-label">quart</span><span class="size-price">40 Dhs</span><button class="size-add-btn" onclick="addToCart('Poulet Beldi (quart)', 40)">+ Ajouter</button></div>
+          <div class="size-badge"><span class="size-label">demi</span><span class="size-price">80 Dhs</span><button class="size-add-btn" onclick="addToCart('Poulet Beldi (demi)', 80)">+ Ajouter</button></div>
+          <div class="size-badge"><span class="size-label">entier</span><span class="size-price">160 Dhs</span><button class="size-add-btn" onclick="addToCart('Poulet Beldi (entier)', 160)">+ Ajouter</button></div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="subsection">
+      <div class="subsection-title">Kr3ine — كرعين &nbsp;·&nbsp; <em style="font-weight:300;font-size:0.9rem">Uniquement midi</em></div>
+      <div class="menu-item" data-name="Pied de veau aux pois chiches (Kr3ine)" data-price="40">
+        <div class="item-left">
+          <span class="item-name">Pied de veau cuisiné aux pois chiches</span>
+        </div>
+        <span class="item-price">40 Dhs</span>
+        <button class="add-btn" onclick="addToCart('Pied de veau aux pois chiches (Kr3ine)', 40)" title="Ajouter">+</button>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">Dowara — ضوارة &nbsp;·&nbsp; <em style="font-weight:300;font-size:0.9rem">Uniquement midi</em></div>
+      <div class="menu-item" data-name="Tripes à la marocaine (Dowara)" data-price="30">
+        <div class="item-left">
+          <span class="item-name">Tripes cuisinés à la marocaine</span>
+        </div>
+        <span class="item-price">30 Dhs</span>
+        <button class="add-btn" onclick="addToCart('Tripes à la marocaine (Dowara)', 30)" title="Ajouter">+</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATS MAROCAINS -->
+  <section class="menu-section" id="plats">
+    <div class="section-header">
+      <span class="section-title-ar">طبق مغربي</span>
+      <span class="section-title-fr">Plat Marocain</span>
+      <div class="section-line"><div class="section-diamond"></div></div>
+    </div>
+
+    <div class="menu-item" data-name="Viande de veau aux 4 légumes" data-price="40">
+      <div class="item-left"><span class="item-name">Viande de veau aux 4 légumes</span></div>
+      <span class="item-price">40 Dhs</span>
+      <button class="add-btn" onclick="addToCart('Viande de veau aux 4 légumes', 40)" title="Ajouter">+</button>
+    </div>
+
+    <div class="menu-item" data-name="Kefta aux tomates et œufs" data-price="35">
+      <div class="item-left"><span class="item-name">Kefta aux tomates et œufs</span></div>
+      <span class="item-price">35 Dhs</span>
+      <button class="add-btn" onclick="addToCart('Kefta aux tomates et œufs', 35)" title="Ajouter">+</button>
+    </div>
+
+    <div class="menu-item" data-name="Viande de veau aux pruneaux et amendes" data-price="40">
+      <div class="item-left"><span class="item-name">Viande de veau aux pruneaux et amendes</span></div>
+      <span class="item-price">40 Dhs</span>
+      <button class="add-btn" onclick="addToCart('Viande de veau aux pruneaux et amendes', 40)" title="Ajouter">+</button>
+    </div>
+
+    <div class="menu-item" data-name="Lapin caramélisés aux raisins secs" data-price="40">
+      <div class="item-left">
+        <span class="item-name">Lapin caramélisés</span>
+        <span class="item-desc">Avec sauce aux raisins secs</span>
+      </div>
+      <span class="item-price">40 Dhs</span>
+      <button class="add-btn" onclick="addToCart('Lapin caramélisés aux raisins secs', 40)" title="Ajouter">+</button>
+    </div>
+  </section>
+
+  <!-- TACOS & SANDWICHS -->
+  <section class="menu-section" id="tacos-sandwichs">
+    <div class="section-header">
+      <span class="section-title-ar">طاكوص &amp; ساندويش</span>
+      <span class="section-title-fr">Tacos &amp; Sandwichs</span>
+      <div class="section-line"><div class="section-diamond"></div></div>
+    </div>
+
+    <div class="two-col">
+      <div class="col-section">
+        <div class="col-title">Tacos</div>
+        <div class="menu-item"><div class="item-left"><span class="item-name">Tacos Dinde</span></div><span class="item-price">25 Dhs</span><button class="add-btn" onclick="addToCart('Tacos Dinde', 25)" title="Ajouter">+</button></div>
+        <div class="menu-item"><div class="item-left"><span class="item-name">Tacos Kefta</span></div><span class="item-price">30 Dhs</span><button class="add-btn" onclick="addToCart('Tacos Kefta', 30)" title="Ajouter">+</button></div>
+        <div class="menu-item"><div class="item-left"><span class="item-name">Tacos Nuggets</span></div><span class="item-price">35 Dhs</span><button class="add-btn" onclick="addToCart('Tacos Nuggets', 35)" title="Ajouter">+</button></div>
+        <div class="menu-item"><div class="item-left"><span class="item-name">Tacos Cordon Bleu</span></div><span class="item-price">35 Dhs</span><button class="add-btn" onclick="addToCart('Tacos Cordon Bleu', 35)" title="Ajouter">+</button></div>
+        <div class="menu-item"><div class="item-left"><span class="item-name">Tacos Mixte</span></div><span class="item-price">35 Dhs</span><button class="add-btn" onclick="addToCart('Tacos Mixte', 35)" title="Ajouter">+</button></div>
+        <div class="menu-item"><div class="item-left"><span class="item-name">Tacos Tenders</span></div><span class="item-price">35 Dhs</span><button class="add-btn" onclick="addToCart('Tacos Tenders', 35)" title="Ajouter">+</button></div>
+      </div>
+
+      <div class="col-section">
+        <div class="col-title">Sandwich</div>
+        <div class="menu-item"><div class="item-left"><span class="item-name">Sandwich Dinde</span></div><span class="item-price">20 Dhs</span><button class="add-btn" onclick="addToCart('Sandwich Dinde', 20)" title="Ajouter">+</button></div>
+        <div class="menu-item"><div class="item-left"><span class="item-name">Sandwich Kefta</span></div><span class="item-price">25 Dhs</span><button class="add-btn" onclick="addToCart('Sandwich Kefta', 25)" title="Ajouter">+</button></div>
+        <div class="menu-item"><div class="item-left"><span class="item-name">Sandwich Saucisse</span></div><span class="item-price">28 Dhs</span><button class="add-btn" onclick="addToCart('Sandwich Saucisse', 28)" title="Ajouter">+</button></div>
+        <div class="menu-item"><div class="item-left"><span class="item-name">Sandwich Crevette</span></div><span class="item-price">30 Dhs</span><button class="add-btn" onclick="addToCart('Sandwich Crevette', 30)" title="Ajouter">+</button></div>
+        <div class="menu-item"><div class="item-left"><span class="item-name">Sandwich Mixte</span></div><span class="item-price">30 Dhs</span><button class="add-btn" onclick="addToCart('Sandwich Mixte', 30)" title="Ajouter">+</button></div>
+        <div class="menu-item" style="border-top:1px solid var(--cream-dark); margin-top:0.5rem; padding-top:0.8rem">
+          <div class="item-left"><span class="item-name">Poutstchio Dinde</span></div><span class="item-price">35 Dhs</span><button class="add-btn" onclick="addToCart('Poutstchio Dinde', 35)" title="Ajouter">+</button>
+        </div>
+        <div class="menu-item">
+          <div class="item-left"><span class="item-name">Poutin Dinde</span></div><span class="item-price">35 Dhs</span><button class="add-btn" onclick="addToCart('Poutin Dinde', 35)" title="Ajouter">+</button>
+        </div>
+      </div>
+    </div>
+
+    <p style="text-align:center;margin-top:1.5rem;font-style:italic;color:#888;font-size:0.9rem">+ Frites &amp; Boisson : <strong style="color:var(--gold)">10 Dhs</strong></p>
+  </section>
+
+  <!-- SPÉCIAL HEBDO -->
+  <section class="menu-section" id="special">
+    <div class="section-header">
+      <span class="section-title-ar">خاص</span>
+      <span class="section-title-fr">Spécialités du Jour</span>
+      <div class="section-line"><div class="section-diamond"></div></div>
+    </div>
+
+    <!-- Vendredi -->
+    <div class="weekly-card">
+      <div class="weekly-day">Chaque Vendredi Midi</div>
+      <span class="weekly-name-ar">كسكس</span>
+      <span class="weekly-name-fr">Couscous</span>
+      <div class="weekly-items">
+        <div class="weekly-item">
+          <span class="weekly-item-name">Couscous Poulet</span>
+          <span class="weekly-item-price">30 Dhs</span>
+          <button class="size-add-btn" onclick="addToCart('Couscous Poulet', 30)" style="margin-left:0.5rem">+ Ajouter</button>
+        </div>
+        <div class="weekly-item">
+          <span class="weekly-item-name">Couscous Viande</span>
+          <span class="weekly-item-price">35 Dhs</span>
+          <button class="size-add-btn" onclick="addToCart('Couscous Viande', 35)" style="margin-left:0.5rem">+ Ajouter</button>
+        </div>
+      </div>
+      <p class="weekly-note">+ 1 verre de Lben offert</p>
+    </div>
+
+    <!-- Mercredi -->
+    <div class="weekly-card">
+      <div class="weekly-day">Chaque Mercredi Midi</div>
+      <span class="weekly-name-ar">رفيسة</span>
+      <span class="weekly-name-fr">Rfissa au Poulet Beldi</span>
+      <div class="weekly-items">
+        <div class="weekly-item" style="flex:none">
+          <span class="weekly-item-name">Rfissa</span>
+          <span class="weekly-item-price">45 Dhs</span>
+          <button class="size-add-btn" onclick="addToCart('Rfissa au Poulet Beldi', 45)" style="margin-left:0.5rem">+ Ajouter</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Samedi -->
+    <div class="weekly-card">
+      <div class="weekly-day">Chaque Samedi Midi</div>
+      <span class="weekly-name-ar">سمك</span>
+      <span class="weekly-name-fr">Poisson</span>
+      <div class="weekly-items">
+        <div class="weekly-item">
+          <span class="weekly-item-name">Kefta de Merlan</span>
+          <span class="weekly-item-price">40 Dhs</span>
+          <button class="size-add-btn" onclick="addToCart('Kefta de Merlan', 40)" style="margin-left:0.5rem">+ Ajouter</button>
+        </div>
+        <div class="weekly-item">
+          <span class="weekly-item-name">Kefta de Sardine</span>
+          <span class="weekly-item-price">25 Dhs</span>
+          <button class="size-add-btn" onclick="addToCart('Kefta de Sardine', 25)" style="margin-left:0.5rem">+ Ajouter</button>
+        </div>
+        <div class="weekly-item">
+          <span class="weekly-item-name">Merlan &amp; Sardine</span>
+          <span class="weekly-item-price">45 Dhs</span>
+          <button class="size-add-btn" onclick="addToCart('Kefta Merlan & Sardine', 45)" style="margin-left:0.5rem">+ Ajouter</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESSERTS -->
+  <section class="menu-section" id="desserts">
+    <div class="section-header">
+      <span class="section-title-ar">تحلية</span>
+      <span class="section-title-fr">Desserts</span>
+      <div class="section-line"><div class="section-diamond"></div></div>
+    </div>
+
+    <div class="menu-item" data-name="Salade de fruit" data-price="10">
+      <div class="item-left"><span class="item-name">Salade de fruit</span></div>
+      <span class="item-price">10 Dhs</span>
+      <button class="add-btn" onclick="addToCart('Salade de fruit', 10)" title="Ajouter">+</button>
+    </div>
+
+    <div class="menu-item" data-name="Plateau de fruit" data-price="25">
+      <div class="item-left"><span class="item-name">Plateau de fruit</span></div>
+      <span class="item-price">25 Dhs</span>
+      <button class="add-btn" onclick="addToCart('Plateau de fruit', 25)" title="Ajouter">+</button>
+    </div>
+
+    <div class="menu-item" data-name="Glace deux boules" data-price="18">
+      <div class="item-left">
+        <span class="item-name">Glace deux boules au choix</span>
+        <span class="item-desc">Chocolat · Vanille · Fraise · Pistache</span>
+      </div>
+      <span class="item-price">18 Dhs</span>
+      <button class="add-btn" onclick="addToCart('Glace deux boules', 18)" title="Ajouter">+</button>
+    </div>
+  </section>
+
+  <!-- BOISSONS -->
+  <section class="menu-section" id="boissons">
+    <div class="section-header">
+      <span class="section-title-ar">مشروبات</span>
+      <span class="section-title-fr">Boissons</span>
+      <div class="section-line"><div class="section-diamond"></div></div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">Jus Frais</div>
+      <div class="drinks-grid">
+        <div class="drink-item"><span class="drink-name">Jus d'Orange</span><span class="drink-price">15 Dhs</span><button class="size-add-btn" onclick="addToCart('Jus d\'Orange', 15)">+</button></div>
+        <div class="drink-item"><span class="drink-name">Jus de Banane</span><span class="drink-price">15 Dhs</span><button class="size-add-btn" onclick="addToCart('Jus de Banane', 15)">+</button></div>
+        <div class="drink-item"><span class="drink-name">Jus de Pomme</span><span class="drink-price">15 Dhs</span><button class="size-add-btn" onclick="addToCart('Jus de Pomme', 15)">+</button></div>
+        <div class="drink-item"><span class="drink-name">Jus d'Avocat</span><span class="drink-price">18 Dhs</span><button class="size-add-btn" onclick="addToCart('Jus d\'Avocat', 18)">+</button></div>
+        <div class="drink-item"><span class="drink-name">Jus d'Avocat fruit sec</span><span class="drink-price">23 Dhs</span><button class="size-add-btn" onclick="addToCart('Jus d\'Avocat fruit sec', 23)">+</button></div>
+        <div class="drink-item"><span class="drink-name">Detox</span><span class="drink-price">15 Dhs</span><button class="size-add-btn" onclick="addToCart('Detox', 15)">+</button></div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">Sodas &amp; Eau</div>
+      <div class="drinks-grid">
+        <div class="drink-item"><span class="drink-name">Soda 25cl</span><span class="drink-price">8 Dhs</span><button class="size-add-btn" onclick="addToCart('Soda 25cl', 8)">+</button></div>
+        <div class="drink-item"><span class="drink-name">Soda 33cl</span><span class="drink-price">12 Dhs</span><button class="size-add-btn" onclick="addToCart('Soda 33cl', 12)">+</button></div>
+        <div class="drink-item"><span class="drink-name">Soda 1L</span><span class="drink-price">13 Dhs</span><button class="size-add-btn" onclick="addToCart('Soda 1L', 13)">+</button></div>
+        <div class="drink-item"><span class="drink-name">Soda 1,5L</span><span class="drink-price">16 Dhs</span><button class="size-add-btn" onclick="addToCart('Soda 1.5L', 16)">+</button></div>
+        <div class="drink-item"><span class="drink-name">Eau Minérale 2L</span><span class="drink-price">10 Dhs</span><button class="size-add-btn" onclick="addToCart('Eau Minérale 2L', 10)">+</button></div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">Thé &amp; Café</div>
+      <div class="drinks-grid">
+        <div class="drink-item"><span class="drink-name">Verre de thé Nadori</span><span class="drink-price">7 Dhs</span><button class="size-add-btn" onclick="addToCart('Verre de thé Nadori', 7)">+</button></div>
+        <div class="drink-item"><span class="drink-name">Thé petit (théillère)</span><span class="drink-price">12 Dhs</span><button class="size-add-btn" onclick="addToCart('Thé petit', 12)">+</button></div>
+        <div class="drink-item"><span class="drink-name">Thé grand modèle</span><span class="drink-price">16 Dhs</span><button class="size-add-btn" onclick="addToCart('Thé grand modèle', 16)">+</button></div>
+        <div class="drink-item"><span class="drink-name">Thé + 5 pâtisseries</span><span class="drink-price">25 Dhs</span><button class="size-add-btn" onclick="addToCart('Thé + 5 pâtisseries', 25)">+</button></div>
+        <div class="drink-item"><span class="drink-name">Cappuccino</span><span class="drink-price">16 Dhs</span><button class="size-add-btn" onclick="addToCart('Cappuccino', 16)">+</button></div>
+        <div class="drink-item"><span class="drink-name">Café noire</span><span class="drink-price">12 Dhs</span><button class="size-add-btn" onclick="addToCart('Café noire', 12)">+</button></div>
+        <div class="drink-item"><span class="drink-name">Café au lait</span><span class="drink-price">12 Dhs</span><button class="size-add-btn" onclick="addToCart('Café au lait', 12)">+</button></div>
+        <div class="drink-item"><span class="drink-name">Chocolat au lait</span><span class="drink-price">12 Dhs</span><button class="size-add-btn" onclick="addToCart('Chocolat au lait', 12)">+</button></div>
+        <div class="drink-item"><span class="drink-name">Lait chaud</span><span class="drink-price">12 Dhs</span><button class="size-add-btn" onclick="addToCart('Lait chaud', 12)">+</button></div>
+      </div>
+      <p style="font-size:0.78rem;color:#888;font-style:italic;margin-top:0.5rem;text-align:center">Thé grand modèle : avec repas seulement</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">مطعم المدينة</div>
+  <div class="footer-sub">Restaurant Al Madina · Oujda</div>
+  <a href="https://www.instagram.com/restaurant_al_madina_?igsh=cGRpN2lzd29xMG1t" target="_blank" class="footer-ig">
+    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    Restaurant Al Madina Oujda
+  </a>
+  <p style="margin-top:2rem;font-size:0.78rem;color:rgba(245,240,232,0.3);letter-spacing:0.12em;font-family:'Cormorant Garamond',serif;font-style:italic;">
+    Created &amp; Designed by <span style="color:rgba(201,168,76,0.5);">Suhayb Dawson</span>
+  </p>
+</footer>
+
+<!-- ================================================================
+     FLOATING CART BAR
+     Shown at the bottom of the screen whenever items are in the cart.
+     ================================================================ -->
+<div id="cart-bar">
+  <div id="cart-summary">
+    🛒 <strong id="cart-count">0</strong> article(s) — <strong id="cart-total-bar">0 Dhs</strong>
+  </div>
+  <button id="cart-clear-btn" onclick="clearCart()" title="Vider le panier">✕</button>
+  <button id="cart-order-btn" onclick="openOrderModal()">Commander →</button>
+</div>
+
+<!-- ================================================================
+     ORDER MODAL
+     Appears when user clicks "Commander".
+     Contains: order type selector, dynamic form fields,
+     cart review, and WhatsApp send button.
+     ================================================================ -->
+<div id="order-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-box">
+
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <span class="modal-title" id="modal-title">🍽️ Votre Commande</span>
+      <button class="modal-close" onclick="closeOrderModal()" aria-label="Fermer">✕</button>
+    </div>
+
+    <div class="modal-body">
+
+      <!-- Step 1: Choose order type -->
+      <div style="margin-bottom:1.2rem;">
+        <p style="font-family:'Playfair Display',serif;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--teal);margin-bottom:0.8rem;">Type de commande</p>
+        <div class="type-selector">
+          <button class="type-btn selected" id="btn-dinein"   onclick="selectType('dinein')">
+            <span class="type-icon">🪑</span>Sur place
+          </button>
+          <button class="type-btn"          id="btn-delivery" onclick="selectType('delivery')">
+            <span class="type-icon">🛵</span>Livraison
+          </button>
+          <button class="type-btn"          id="btn-pickup"   onclick="selectType('pickup')">
+            <span class="type-icon">🥡</span>À emporter
+          </button>
+        </div>
+      </div>
+
+      <!-- Dynamic form fields — change based on selected type -->
+      <div id="order-form">
+
+        <!-- Always visible: customer name -->
+        <div class="form-group">
+          <label for="customer-name">Nom du client *</label>
+          <input type="text" id="customer-name" placeholder="Votre prénom et nom" autocomplete="name">
+        </div>
+
+        <!-- Dine-In only: table number -->
+        <div class="form-group" id="field-table">
+          <label for="table-number">Numéro de table *</label>
+          <input type="text" id="table-number" placeholder="Ex: Table 5">
+        </div>
+
+        <!-- Delivery only: full address -->
+        <div class="form-group" id="field-address" style="display:none">
+          <label for="delivery-address">Adresse complète *</label>
+          <textarea id="delivery-address" placeholder="Rue, quartier, ville…"></textarea>
+        </div>
+
+      </div>
+
+      <!-- Error message box (shown only on validation failure) -->
+      <div class="form-error" id="form-error"></div>
+
+      <!-- Cart review: lists items + quantities + total -->
+      <div class="modal-cart-review">
+        <h4>🛒 Détails de la commande</h4>
+        <div id="modal-cart-list"><!-- populated by JS --></div>
+        <div class="modal-total">
+          <span>Total</span>
+          <span id="modal-total-price">0 Dhs</span>
+        </div>
+      </div>
+
+      <!-- WhatsApp send button -->
+      <button class="whatsapp-btn" onclick="sendOrderWhatsApp()">
+        <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Envoyer sur WhatsApp
+      </button>
+
+    </div><!-- /modal-body -->
+  </div><!-- /modal-box -->
+</div><!-- /order-modal -->
+
+
+<script>
+/* ================================================================
+   CART STATE
+   cart is an array of objects: { name: string, price: number, qty: number }
+   ================================================================ */
+let cart = [];
+
+/* Current order type: 'dinein' | 'delivery' | 'pickup' */
+let orderType = 'dinein';
+
+/* ================================================================
+   addToCart(name, price)
+   Called by every "+ Add" button on the page.
+   If item already in cart, increments quantity.
+   ================================================================ */
+function addToCart(name, price) {
+  const existing = cart.find(item => item.name === name);
+  if (existing) {
+    existing.qty += 1;
+  } else {
+    cart.push({ name, price, qty: 1 });
+  }
+  updateCartBar();
+
+  /* Brief visual feedback: flash the add button gold */
+  const btns = document.querySelectorAll('.add-btn, .size-add-btn');
+  btns.forEach(btn => {
+    if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(name.replace(/'/g, "\\'"))) {
+      btn.style.background = 'var(--gold)';
+      btn.style.color = 'var(--teal-dark)';
+      setTimeout(() => {
+        btn.style.background = '';
+        btn.style.color = '';
+      }, 400);
+    }
+  });
+}
+
+/* ================================================================
+   removeFromCart(name)
+   Removes an item entirely from the cart.
+   ================================================================ */
+function removeFromCart(name) {
+  cart = cart.filter(item => item.name !== name);
+  updateCartBar();
+  renderModalCart(); /* refresh modal if open */
+}
+
+/* ================================================================
+   clearCart()
+   Empties the entire cart and hides the cart bar.
+   ================================================================ */
+function clearCart() {
+  cart = [];
+  updateCartBar();
+}
+
+/* ================================================================
+   cartTotal()
+   Calculates and returns the total price of the cart.
+   ================================================================ */
+function cartTotal() {
+  return cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+}
+
+/* ================================================================
+   updateCartBar()
+   Syncs the floating cart bar with current cart state.
+   Shows/hides bar and updates item count + total.
+   ================================================================ */
+function updateCartBar() {
+  const bar       = document.getElementById('cart-bar');
+  const countEl   = document.getElementById('cart-count');
+  const totalEl   = document.getElementById('cart-total-bar');
+  const totalItems = cart.reduce((sum, i) => sum + i.qty, 0);
+
+  countEl.textContent = totalItems;
+  totalEl.textContent = cartTotal() + ' Dhs';
+
+  if (totalItems > 0) {
+    bar.classList.add('visible');
+    document.body.classList.add('cart-open');   /* adds padding-bottom to main */
+  } else {
+    bar.classList.remove('visible');
+    document.body.classList.remove('cart-open');
+    closeOrderModal();
+  }
+}
+
+/* ================================================================
+   openOrderModal()
+   Opens the order modal and pre-renders the cart items.
+   ================================================================ */
+function openOrderModal() {
+  if (cart.length === 0) return;
+  document.getElementById('order-modal').classList.add('open');
+  document.body.style.overflow = 'hidden'; /* prevent background scroll */
+  renderModalCart();
+  hideError();
+}
+
+/* ================================================================
+   closeOrderModal()
+   Closes the order modal.
+   ================================================================ */
+function closeOrderModal() {
+  document.getElementById('order-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* Close modal when clicking the dark overlay (outside the box) */
+document.getElementById('order-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeOrderModal();
+});
+
+/* Close modal on Escape key */
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeOrderModal();
+});
+
+/* ================================================================
+   selectType(type)
+   Called when user clicks a type button (dinein / delivery / pickup).
+   Updates selected state and shows/hides dynamic fields.
+   ================================================================ */
+function selectType(type) {
+  orderType = type;
+
+  /* Update button visual states */
+  ['dinein', 'delivery', 'pickup'].forEach(t => {
+    document.getElementById('btn-' + t).classList.remove('selected');
+  });
+  document.getElementById('btn-' + type).classList.add('selected');
+
+  /* Show/hide conditional fields */
+  const tableField   = document.getElementById('field-table');
+  const addressField = document.getElementById('field-address');
+
+  if (type === 'dinein') {
+    tableField.style.display   = 'block';
+    addressField.style.display = 'none';
+  } else if (type === 'delivery') {
+    tableField.style.display   = 'none';
+    addressField.style.display = 'block';
+  } else { /* pickup */
+    tableField.style.display   = 'none';
+    addressField.style.display = 'none';
+  }
+
+  hideError();
+}
+
+/* ================================================================
+   renderModalCart()
+   Builds the list of cart items inside the modal.
+   Each row has: name, quantity, line total, and a remove button.
+   ================================================================ */
+function renderModalCart() {
+  const listEl    = document.getElementById('modal-cart-list');
+  const totalEl   = document.getElementById('modal-total-price');
+
+  if (cart.length === 0) {
+    listEl.innerHTML = '<p style="color:#aaa;font-size:0.9rem;text-align:center;padding:0.5rem">Panier vide</p>';
+    totalEl.textContent = '0 Dhs';
+    return;
+  }
+
+  /* Build a row for each cart item */
+  listEl.innerHTML = cart.map(item => `
+    <div class="modal-cart-row">
+      <span class="row-name">${item.name}</span>
+      <span class="row-qty">×${item.qty}</span>
+      <span class="row-price">${item.price * item.qty} Dhs</span>
+      <button class="row-remove" onclick="removeFromCart('${item.name.replace(/'/g, "\\'")}')">✕</button>
+    </div>
+  `).join('');
+
+  totalEl.textContent = cartTotal() + ' Dhs';
+}
+
+/* ================================================================
+   validateForm()
+   Checks that required fields are filled.
+   Returns { valid: bool, error: string }.
+   ================================================================ */
+function validateForm() {
+  const name = document.getElementById('customer-name').value.trim();
+  if (!name) return { valid: false, error: 'Veuillez entrer votre nom.' };
+
+  if (orderType === 'dinein') {
+    const table = document.getElementById('table-number').value.trim();
+    if (!table) return { valid: false, error: 'Veuillez entrer le numéro de table.' };
+  }
+
+  if (orderType === 'delivery') {
+    const address = document.getElementById('delivery-address').value.trim();
+    if (!address) return { valid: false, error: 'Veuillez entrer votre adresse de livraison.' };
+  }
+
+  if (cart.length === 0) return { valid: false, error: 'Votre panier est vide.' };
+
+  return { valid: true };
+}
+
+/* ================================================================
+   showError(msg) / hideError()
+   Shows or hides the inline error box.
+   ================================================================ */
+function showError(msg) {
+  const el = document.getElementById('form-error');
+  el.textContent = msg;
+  el.classList.add('visible');
+}
+function hideError() {
+  document.getElementById('form-error').classList.remove('visible');
+}
+
+/* ================================================================
+   sendOrderWhatsApp()
+   Main function triggered by the WhatsApp button.
+   1. Validates the form.
+   2. Builds the formatted message.
+   3. Encodes it with encodeURIComponent().
+   4. Redirects to wa.me with the encoded message.
+   ================================================================ */
+function sendOrderWhatsApp() {
+
+  /* Step 1: Validate */
+  const validation = validateForm();
+  if (!validation.valid) {
+    showError(validation.error);
+    return;
+  }
+  hideError();
+
+  /* Step 2: Read form values */
+  const customerName = document.getElementById('customer-name').value.trim();
+  const tableNumber  = document.getElementById('table-number').value.trim();
+  const address      = document.getElementById('delivery-address').value.trim();
+
+  /* Resolve human-readable order type label */
+  const typeLabels = {
+    dinein:   'Sur place (Dine-In)',
+    delivery: 'Livraison',
+    pickup:   'À emporter (Pickup)'
+  };
+  const typeLabel = typeLabels[orderType];
+
+  /* Step 3: Build extra info line (table or address) */
+  let extraLine = '';
+  if (orderType === 'dinein') {
+    extraLine = `Table: ${tableNumber}`;
+  } else if (orderType === 'delivery') {
+    extraLine = `Adresse: ${address}`;
+  }
+
+  /* Step 4: Build the cart lines */
+  const cartLines = cart
+    .map(item => `  - ${item.name} x${item.qty}  →  ${item.price * item.qty} Dhs`)
+    .join('\n');
+
+  /* Step 5: Assemble the full WhatsApp message */
+  const message = [
+    '🍽️ *Nouvelle Commande — Restaurant Al Madina*',
+    '',
+    `👤 Nom: ${customerName}`,
+    `📦 Type: ${typeLabel}`,
+    extraLine ? extraLine : null,          /* only included if relevant */
+    '',
+    '🛒 *Détails de la commande:*',
+    cartLines,
+    '',
+    `💰 *Total: ${cartTotal()} MAD*`,
+    '',
+    '— Envoyé via le site web du restaurant'
+  ]
+  .filter(line => line !== null)           /* remove null lines */
+  .join('\n');
+
+  /* Step 6: Encode and redirect to WhatsApp
+     Replace 212XXXXXXXXX with the restaurant's actual WhatsApp number */
+  const WHATSAPP_NUMBER = '212641503277'; /* ← PUT REAL NUMBER HERE */
+  const encodedMessage  = encodeURIComponent(message);
+  const whatsappURL     = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+
+  /* Open WhatsApp in a new tab (mobile will open the app) */
+  window.open(whatsappURL, '_blank');
+}
+
+/* ================================================================
+   showSection(id) — original navigation function (unchanged)
+   ================================================================ */
+function showSection(id) {
+  document.querySelectorAll('.menu-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.currentTarget.classList.add('active');
+  window.scrollTo({ top: document.querySelector('nav').offsetTop, behavior: 'smooth' });
+}
+</script>
 
 </body>
 </html>
